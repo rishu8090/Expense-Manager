@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">expenseManager</string>
+    <string name="content_descr">TODO</string>
+    <string name="date">12 Sept. 2024</string>
+    <string name="daily">Daily</string>
+    <string name="monthly">Monthly</string>
+    <string name="calendar">Calendar</string>
+    <string name="summary">Summary</string>
+    <string name="notes">Notes</string>
+    <string name="income">INCOME</string>
+    <string name="zeroZero">0.0</string>
+    <string name="expense">EXPENSE</string>
+    <string name="total">Total</string>
+    <string name="trans.">Trans.</string>
+    <string name="stats">Stats</string>
+    <string name="accounts">Accounts</string>
+    <string name="more">More</string>
+    <string name="search">Search</string>
+    <string name="fav.">Favourites</string>
+    <string name="business">Business</string>
+    <string name="cash">Cash</string>
+    <string name="thousand">1000</string>
+    <string name="select_date">Select Date</string>
+    <string name="amount">Amount</string>
+    <string name="category">Category</string>
+    <string name="account">Account</string>
+    <string name="note">Note</string>
+    <string name="save_trans">Save Transaction</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
