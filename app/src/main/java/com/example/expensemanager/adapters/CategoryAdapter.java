@@ -43,7 +43,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         holder.binding.categoryText.setText(category.getCategoryName());
         holder.binding.categoryIcon.setImageResource(category.getCategoryImage());
 
-        holder.binding.categoryIcon.setBackgroundTintList(context.getColorStateList(category.getCategoryColor()));
+        holder.binding.categoryIcon.setBackgroundTintList(context.getColorStateList(category.getCategoryColor()));   // it is used to set color baackground on the icon .
 
         holder.itemView.setOnClickListener(c-> {
             categoryClickListener.onCategoryClicked(category);

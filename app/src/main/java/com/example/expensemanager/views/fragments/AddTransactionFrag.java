@@ -19,9 +19,10 @@ import com.example.expensemanager.databinding.FragmentAddTransactionBinding;
 import com.example.expensemanager.databinding.ListDialogBinding;
 import com.example.expensemanager.models.Account;
 import com.example.expensemanager.models.Category;
+import com.example.expensemanager.utils.Constants;
+import com.example.expensemanager.utils.Helper;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -68,8 +69,8 @@ public class AddTransactionFrag extends BottomSheetDialogFragment {
                 calendar.set(Calendar.MONTH, view.getMonth());
                 calendar.set(Calendar.YEAR, view.getYear());
 
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM, yyyy");
-                String dateToshow = dateFormat.format(calendar.getTime());
+               // SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM, yyyy");
+                String dateToshow = Helper.formatDate(calendar.getTime());
                 binding.date.setText(dateToshow);
             });
             datePickerDialog.show();
@@ -82,20 +83,9 @@ public class AddTransactionFrag extends BottomSheetDialogFragment {
             AlertDialog categoryDialog = new AlertDialog.Builder(getContext()).create();  // here , we create a alertDialog.
             categoryDialog.setView(dialogBinding.getRoot());  // here we bind list on dialog.
 
-            ArrayList<Category> categories = new ArrayList<>();
-            categories.add(new Category("Salary", R.drawable.ic_salary,R.color.darkerthanlightyellow));
-            categories.add(new Category("Business", R.drawable.ic_business,R.color.dodger_blue));
-            categories.add(new Category("Investment", R.drawable.ic_investment,R.color._light_green));
-            categories.add(new Category("Loan", R.drawable.ic_loan,R.color.dark_gray));
-            categories.add(new Category("Rent", R.drawable.ic_rent,R.color.hot_pink));
-            categories.add(new Category("Others", R.drawable.ic_other,R.color.indigo));
-
-            CategoryAdapter categoryAdapter = new CategoryAdapter(getContext(),categories,new CategoryAdapter.CategoryClickListener(){
-                @Override
-                public void onCategoryClicked(Category category){
-                    binding.category.setText(category.getCategoryName());
-                    categoryDialog.dismiss();
-                }
+            CategoryAdapter categoryAdapter = new CategoryAdapter(getContext(), Constants.categories, category -> {
+                binding.category.setText(category.getCategoryName());
+                categoryDialog.dismiss();
             });
             dialogBinding.recyclerView.setLayoutManager(new GridLayoutManager(getContext(),3));
             dialogBinding.recyclerView.setAdapter(categoryAdapter);
@@ -113,7 +103,7 @@ public class AddTransactionFrag extends BottomSheetDialogFragment {
             accounts.add(new Account(0, "Bank"));
             accounts.add(new Account(0, "Cash"));
             accounts.add(new Account(0, "Gives"));
-            accounts.add(new Account(0, "Wallets"));
+            accounts.add(new Account(0, "UPI"));
             accounts.add(new Account(0, "Others"));
 
             AccountsAdapter accountsAdapter = new AccountsAdapter(getContext(), accounts, new AccountsAdapter.AccountsClickListener() {
